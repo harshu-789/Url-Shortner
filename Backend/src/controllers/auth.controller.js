@@ -1,7 +1,6 @@
-import { cookieOptions } from "../config/config.js"
-import wrapAsync from "../utils/tryCatchWrapper.js"
-import { register_user, login_user } from "../services/auth.service.js"
-
+import { cookieOptions } from "../config/config.js";
+import wrapAsync from "../utils/tryCatchWrapper.js";
+import { register_user, login_user } from "../services/auth.service.js";
 
 
 
@@ -12,7 +11,7 @@ export const registerUser = wrapAsync( async(req,res)=>{
     const {token,user} = await register_user(name,email,password)
     req.user = user
     res.cookie("accessToken",token,cookieOptions)
-    res.status(200).json({message : "registeration successfull"})
+    res.status(200).json({message : "registration successful"})
 })
 
 export const loginUser = wrapAsync( async(req,res)=>{
@@ -20,12 +19,12 @@ export const loginUser = wrapAsync( async(req,res)=>{
     const {token,user} = await login_user(email,password)
     req.user = user
     res.cookie("accessToken",token,cookieOptions)
-    res.status(200).json({message : "login successfull"})
+    res.status(200).json({message : "login successful"})
 })
 
 export const logoutUser = wrapAsync( async(req,res)=>{
     res.clearCookie("accessToken",cookieOptions)
-    res.status(200).json({message : "logout successfull"})
+    res.status(200).json({message : "logout successful"})
 })
 
 export const get_current_user = wrapAsync( async (req, res) => {

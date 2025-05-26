@@ -9,6 +9,7 @@ import { redirectShortUrl } from "./src/controllers/short.url.controller.js"
 import shortUrl from "./src/router/short_url.router.js";
 import authRouter from "./src/router/auth.routes.js"
 import userRouter from "./src/router/user.routes.js";
+import { attachUser } from "./src/utils/attachUser.js"
 
 
 
@@ -24,6 +25,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 
+app.use(attachUser)
 app.use("/api/create",shortUrl)
 app.use("/api/auth",authRouter)
 app.use("/api/user",userRouter)

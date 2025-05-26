@@ -5,8 +5,8 @@ import { login_user, register_user } from "../services/auth.service.js"
 
 const router = express.Router()
 
-router.post("/register", register_user)
-router.post("/login", login_user)
+router.post("/register", registerUser,register_user)
+router.post("/login", loginUser,login_user)
 router.post("/logout",logoutUser)
 router.get("/me",authMiddleware,get_current_user)
 
