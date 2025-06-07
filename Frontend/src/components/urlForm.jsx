@@ -10,7 +10,7 @@ const urlForm = () =>{
     const [customSlug,setCustomSlug] = useState("")
     const {isAuthenticated} = useSelector((state)=> state.auth)
 
-    cosnt handleSubmit = async()=>{
+    const handleSubmit = async()=>{
         try{
             const shortUrl = await createShortUrl(url,customSlug)
             setShortUrl(shortUrl)

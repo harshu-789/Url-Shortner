@@ -10,6 +10,7 @@ import shortUrl from "./src/router/short_url.router.js";
 import authRouter from "./src/router/auth.routes.js"
 import userRouter from "./src/router/user.routes.js";
 import { attachUser } from "./src/utils/attachUser.js"
+import cors from "cors"
 
 
 
@@ -21,6 +22,10 @@ dotenv.config("./.env")
 
 
 const app = express()
+app.use(cors({
+    origin: 'http://localhost:5173', // your React app
+    credentials: true // 👈 this allows cookies to be sent
+}));
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
