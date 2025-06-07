@@ -14,14 +14,14 @@ const urlForm = () =>{
         try{
             const shortUrl = await createShortUrl(url,customSlug)
             setShortUrl(shortUrl)
-            queryClient.invalidateQueries({queryKey: ['userUrls']})
+            QueryClient.invalidateQueries({queryKey: ['userUrls']})
             setError(null)
         } catch(err){
             setError(err.message)
         }
     }
 
-    const handlCopy = () =>{
+    const handleCopy = () =>{
         navigator.clipboard.writeText(shortUrl)
         setCopied(true)
 
