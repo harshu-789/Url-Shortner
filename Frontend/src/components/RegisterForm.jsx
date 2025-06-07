@@ -5,7 +5,7 @@ import { login } from '../store/slice/authSlice';
 import { useNavigate } from '@tanstack/react-router';
 
 
-const RegisterForm = () =>{
+const RegisterForm = ({setState}) =>{
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
@@ -24,13 +24,12 @@ const RegisterForm = () =>{
         setError('')
         try {
             const data = await registerUser(name,email,password)
-            setLoading(false)
             dispatch(login(data.user))
             navigate({to: "/dashboard"})
             setLoading(false)
         } catch (error) {
             setLoading(false)
-            setError(err.message || "Registration failed. Please try again.")
+            setError(error.message || "Registration failed. Please try again.")
         }
     }
 
@@ -40,7 +39,7 @@ const RegisterForm = () =>{
 
     return(
         <div className="w-full max-w-md mx-auto">
-        <div onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <h2 className="text-2xl font-bold text-center mb-6">Create an Account</h2>
           
           {error && (
@@ -109,10 +108,10 @@ const RegisterForm = () =>{
           
           <div className="text-center mt-4">
             <p className="cursor-pointer text-sm text-gray-600">
-              Already have an account? <span onClick={()=>state(true)} className="text-blue-500 hover:text-blue-700">Sign In</span>
+              Already have an account? <span onClick={()=>setState(true)} className="text-blue-500 hover:text-blue-700">Sign In</span>
             </p>
           </div>
-        </div>
+        </form>
       </div>
     )
 }

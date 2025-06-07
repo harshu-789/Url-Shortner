@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 })
 
 //  Response Interceptor
-axios.instance.response.use(
+axiosInstance.interceptors.response.use(
     (response)=>{
         // Any status code within the range of 2xx
         return response;

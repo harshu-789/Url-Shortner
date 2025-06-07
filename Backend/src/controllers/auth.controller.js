@@ -11,7 +11,7 @@ export const registerUser = wrapAsync( async(req,res)=>{
     const {token,user} = await register_user(name,email,password)
     req.user = user
     res.cookie("accessToken",token,cookieOptions)
-    res.status(200).json({message : "registration successful"})
+    res.status(200).json({message : "registration successful", user})
 })
 
 export const loginUser = wrapAsync( async(req,res)=>{
@@ -19,7 +19,7 @@ export const loginUser = wrapAsync( async(req,res)=>{
     const {token,user} = await login_user(email,password)
     req.user = user
     res.cookie("accessToken",token,cookieOptions)
-    res.status(200).json({message : "login successful"})
+    res.status(200).json({message : "login successful", user})
 })
 
 export const logoutUser = wrapAsync( async(req,res)=>{

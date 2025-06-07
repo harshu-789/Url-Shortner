@@ -6,12 +6,12 @@ export const loginUser = async (password,email) => {
 }
 
 export const registerUser = async(name,email,password)=>{
-    const {data} = await axiosInstance.post("/api/auth/registerUser",{name,email,password})
+    const {data} = await axiosInstance.post("/api/auth/register",{name,email,password})
     return data
 }
 
 export const logoutUser = async () =>{
-    const {data} = await axiosInstance.get("/api/auth/logout")
+    const {data} = await axiosInstance.post("/api/auth/logout")
     return data
 }
 
@@ -21,6 +21,6 @@ export const getCurrentUser = async () =>{
 }
 
 export const getAllUserUrls = async()=>{
-    const {data} = await axiosInstance.post("/api/auth/urls")
+    const {data} = await axiosInstance.get("/api/user/urls")
     return data
 }

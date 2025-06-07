@@ -3,7 +3,7 @@ import { rootRoute } from "./routeTree"
 import AuthPage from "../pages/AuthPage"
 
 export const authRoute = createRoute({
-    getParentRoute : ()=> authRoute,
+    getParentRoute : ()=> rootRoute,
     path : "/auth",
     component : AuthPage,
 })
