@@ -4,6 +4,7 @@ import { authRoute } from "./auth.route"
 import { dashboardRoute } from "./dashboard"
 import { servicesRoute } from "./services.route"
 import { contactRoute } from "./contact.route"
+
 import RootLayout from "../RootLayout"
 
 
@@ -16,5 +17,7 @@ export const routeTree = rootRoute.addChildren([
     authRoute,
     dashboardRoute,
     servicesRoute,
-    contactRoute
+    contactRoute,
+
+
 ])

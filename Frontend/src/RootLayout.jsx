@@ -5,6 +5,8 @@ import AuthPage from './pages/AuthPage'
 import { Outlet } from '@tanstack/react-router'
 import Navbar from './components/NavBar'
 import ServicesPage from './pages/ServicesPage'
+import ContactPage from "./pages/ContactPage"
+
 
 
 const RootLayout = () =>{
@@ -12,10 +14,12 @@ const RootLayout = () =>{
     <>
     <Navbar/>
     <Outlet/>
-    <AuthPage/>
-    <LoginForm/>
-    <HomePage/>
+   
+    {/* <AuthPage/> */}
+    {/* <LoginForm/> */}
+    {/* <HomePage/> */}
     <ServicesPage/>
+    <ContactPage/>
     </>
   )
 }

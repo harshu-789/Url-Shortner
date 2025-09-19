@@ -32,7 +32,7 @@ const RegisterForm = ({setState}) =>{
             setError(error.message || "Registration failed. Please try again.")
         }
     }
-
+  
 
 
 

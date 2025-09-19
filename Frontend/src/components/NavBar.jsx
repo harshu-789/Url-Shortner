@@ -39,7 +39,7 @@ const Navbar = () => {
                         </Link>
 
                         {/* Desktop Navigation Links */}
-                        <div className="hidden md:flex ml-10 space-x-8">
+                        <div className="hidden md:flex  ml-10 space-x-8">
                             <Link
                                 to="/"
                                 className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"

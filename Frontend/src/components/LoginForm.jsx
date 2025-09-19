@@ -19,6 +19,7 @@ const LoginForm = ({state}) => {
         setError('')
         try {
             const data = await loginUser(password,email)
+            console.log("Login API response:", data); 
             dispatch(login(data.user))
             navigate({to: "/dashboard"})
             setLoading(false)

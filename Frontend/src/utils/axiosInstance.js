@@ -13,7 +13,7 @@ axiosInstance.interceptors.response.use(
         return response;
     },
     (error)=>{
-        // It handles differnet types of errors
+        // It handles different types of errors
         if(error.response){
             // The server responded with a status code outside the 2xx range        
             const {status,data} = error.response
