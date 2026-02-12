@@ -14,7 +14,10 @@ import cors from "cors"
 
 
 
-dotenv.config("./.env")
+// dotenv.config("./.env")
+dotenv.config();
+
+console.log("ENV CHECK →", process.env.MONGO_URI);
 
 
 
