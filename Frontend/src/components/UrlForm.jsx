@@ -22,6 +22,8 @@ const UrlForm = () => {
       setError(err?.response?.data?.message || err.message || 'Something went wrong.');
     }
   };
+  console.log("API URL:", import.meta.env.VITE_API_URL);
+
 
   const handleCopy = () => {
     navigator.clipboard.writeText(shortUrl);
