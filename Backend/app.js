@@ -49,6 +49,10 @@ app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
 app.get("/:id", redirectShortUrl);
 app.use(errorHandler);
+app.get("/ping", (req, res) => {
+  res.json({ message: "pong" });
+});
+
 
 app.listen(3000, () => {
   connectDB();
