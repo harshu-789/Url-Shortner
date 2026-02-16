@@ -21,6 +21,7 @@ const allowedOrigins = [
   "https://url-shortner-psi-ivory.vercel.app",
   "https://url-shortner-gibd.onrender.com"
 ];
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
 
 app.use(
   cors({
