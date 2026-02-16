@@ -19,7 +19,8 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "https://url-shortner-psi-ivory.vercel.app",
-  "https://url-shortner-gibd.onrender.com"
+  // "https://url-shortner-gibd.onrender.com"
+  "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app"
 ];
 console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
 
