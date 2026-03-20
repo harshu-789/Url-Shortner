@@ -20,13 +20,15 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://url-shortner-psi-ivory.vercel.app",
   // "https://url-shortner-gibd.onrender.com"
-  "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app"
+  "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app",
 ];
 console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
 
 app.use(
   cors({
     origin: function (origin, callback) {
+      // Allow all origins in development for easier local testing
+      if (process.env.NODE_ENV !== "production") return callback(null, true);
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -34,10 +36,8 @@ app.use(
       }
     },
     credentials: true,
-  })
+  }),
 );
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -52,7 +52,6 @@ app.use(errorHandler);
 app.get("/ping", (req, res) => {
   res.json({ message: "pong" });
 });
-
 
 app.listen(3000, () => {
   connectDB();
