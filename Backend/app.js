@@ -21,13 +21,31 @@ const allowedOrigins = [
   "https://url-shortner-psi-ivory.vercel.app",
   // "https://url-shortner-gibd.onrender.com"
   "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app",
-];
+  process.env.FRONTEND_URL,
+].filter(Boolean); // Remove any undefined values
 console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
+console.log("Allowed Origins:", allowedOrigins);
 
 app.use(
   cors({
     origin: function (origin, callback) {
       // Allow all origins in development for easier local testing
+      if (process.env.NODE_ENV !== "production") return callback(null, true);
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  }),
+);
+
+// Handle preflight requests
+app.options(
+  "*",
+  cors({
+    origin: function (origin, callback) {
       if (process.env.NODE_ENV !== "production") return callback(null, true);
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
