@@ -5,6 +5,8 @@ import {
 } from "../services/short_url.service.js";
 import wrapAsync from "../utils/tryCatchWrapper.js";
 
+const baseUrl = process.env.APP_URL || "http://localhost:3000/";
+
 export const createShortUrl = wrapAsync(async (req, res) => {
   const data = req.body;
   let shortUrl;
@@ -13,7 +15,7 @@ export const createShortUrl = wrapAsync(async (req, res) => {
   } else {
     shortUrl = await createShortUrlWithoutUser(data.url, data.slug);
   }
-  res.status(200).json({ shortUrl: process.env.APP_URL + shortUrl });
+  res.status(200).json({ shortUrl: baseUrl + shortUrl });
 });
 
 export const redirectShortUrl = wrapAsync(async (req, res) => {
@@ -26,5 +28,5 @@ export const redirectShortUrl = wrapAsync(async (req, res) => {
 export const createCustomShortUrl = wrapAsync(async (req, res) => {
   const { url, slug } = req.body;
   const shortUrl = await createShortUrlWithoutUser(url, slug);
-  res.status(200).json({ shortUrl: process.env.APP_URL + shortUrl });
+  res.status(200).json({ shortUrl: baseUrl + shortUrl });
 });
