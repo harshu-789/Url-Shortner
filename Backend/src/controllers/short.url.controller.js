@@ -13,22 +13,18 @@ export const createShortUrl = wrapAsync(async (req, res) => {
   } else {
     shortUrl = await createShortUrlWithoutUser(data.url);
   }
-  const baseUrl = process.env.APP_URL || `${req.protocol}://${req.get("host")}`;
-  res.status(200).json({ shortUrl: baseUrl + shortUrl });
+  res.status(200).json({ shortUrl: process.env.APP_URL + shortUrl });
 });
 
 export const redirectShortUrl = wrapAsync(async (req, res) => {
   const { id } = req.params;
   const url = await getShortUrl(id);
-  if (!url) {
-    return res.status(404).send("Short URL not found");
-  }
+  if (!url) throw new Error("Short URL not Found");
   res.redirect(url.full_url);
 });
 
 export const createCustomShortUrl = wrapAsync(async (req, res) => {
   const { url, slug } = req.body;
-  const shortUrl = await createShortUrlWithoutUser(url, slug);
-  const baseUrl = process.env.APP_URL || `${req.protocol}://${req.get("host")}`;
-  res.status(200).json({ shortUrl: baseUrl + shortUrl });
+  const shortUrl = await createShortUrlWithoutUser(url, customUrl);
+  res.status(200).json({ shortUrl: process.env.APP_URL + shortUrl });
 });

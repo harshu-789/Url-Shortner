@@ -41,22 +41,6 @@ app.use(
   }),
 );
 
-// Handle preflight requests
-app.options(
-  "*",
-  cors({
-    origin: function (origin, callback) {
-      if (process.env.NODE_ENV !== "production") return callback(null, true);
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  }),
-);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
