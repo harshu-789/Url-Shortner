@@ -20,7 +20,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "https://url-shortner-psi-ivory.vercel.app",
   "https://url-shortner-gibd.onrender.com",
-  // "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app",
+  "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app",
   process.env.FRONTEND_URL,
 ].filter(Boolean); // Remove any undefined values
 console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
