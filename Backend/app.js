@@ -12,15 +12,15 @@ import userRouter from "./src/router/user.routes.js";
 import { attachUser } from "./src/utils/attachUser.js";
 import cors from "cors";
 
-// dotenv.config("./.env")
+dotenv.config("./.env")
 dotenv.config();
 
 const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "https://url-shortner-psi-ivory.vercel.app",
-  // "https://url-shortner-gibd.onrender.com"
-  "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app",
+  "https://url-shortner-gibd.onrender.com",
+  // "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app",
   process.env.FRONTEND_URL,
 ].filter(Boolean); // Remove any undefined values
 console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
