@@ -5,7 +5,7 @@ import { login } from '../store/slice/authSlice';
 import { useNavigate } from '@tanstack/react-router';
 
 
-const RegisterForm = ({setState}) =>{
+const RegisterForm = ({state}) =>{
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
@@ -99,7 +99,6 @@ const RegisterForm = ({setState}) =>{
             <button
               className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
               type="submit"
-              onClick={handleSubmit}
               disabled={loading}
             >
               {loading ? 'Creating...' : 'Create Account'}
@@ -108,7 +107,7 @@ const RegisterForm = ({setState}) =>{
           
           <div className="text-center mt-4">
             <p className="cursor-pointer text-sm text-gray-600">
-              Already have an account? <span onClick={()=>setState(true)} className="text-blue-500 hover:text-blue-700">Sign In</span>
+              Already have an account? <span onClick={() => state(true)} className="text-blue-500 hover:text-blue-700">Sign In</span>
             </p>
           </div>
         </form>
