@@ -83,6 +83,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
+  "https://d1nwigsvxg85ow.cloudfront.net",
   "https://url-shortner-psi-ivory.vercel.app",
   "https://url-shortner-gibd.onrender.com",
   "https://url-shortner-git-main-rishesha-harshs-projects.vercel.app",
