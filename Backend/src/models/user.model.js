@@ -33,8 +33,7 @@ const userSchema = new mongoose.Schema({
         delete ret.__v;
         return ret;
       }
-    
-})
+    });
 
 userSchema.pre("save",async function(next){
     if(!this.isModified("password"))
@@ -42,7 +41,7 @@ userSchema.pre("save",async function(next){
     this.password = await bcrypt.hash(this.password,10)
     next()
 
-})
+});
 
 
 const user =  mongoose.model("user",userSchema)
